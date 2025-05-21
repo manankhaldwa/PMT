@@ -73,7 +73,7 @@ function Login() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="bg-gradient-to-r from-indigo-600 to-blue-600 p-6 text-center">
-          <h2 className="text-2xl font-bold text-white">Welcome Herooo</h2>
+          <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
           <p className="text-blue-100 mt-1">Sign in to continue to your dashboard</p>
         </div>
         
