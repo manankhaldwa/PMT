@@ -1,31 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
-import { signInWithEmailAndPassword,setPersistence,browserSessionPersistence, browserLocalPersistence } from "firebase/auth";
+import { 
+  signInWithEmailAndPassword, 
+  setPersistence, 
+  browserSessionPersistence, 
+  browserLocalPersistence 
+} from "firebase/auth";
 import { auth } from "../firebase";
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsLoading(true);
-  setError('');
-  try {
-    // Get the "Remember Me" checkbox value
-    const rememberMe = e.currentTarget.elements['remember-me'].checked;
-    
-    // Set persistence based on checkbox
-    await setPersistence(
-      auth,
-      rememberMe ? browserLocalPersistence : browserSessionPersistence
-    );
-
-    await signInWithEmailAndPassword(auth, email, password);
-    navigate('/dashboard'); // redirect after login
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setIsLoading(false);
-  }
-};
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -33,6 +15,7 @@ function Login() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -41,7 +24,13 @@ function Login() {
     setError('');
     
     try {
-      // Firebase authentication
+      // Set persistence based on "Remember Me" checkbox
+      await setPersistence(
+        auth,
+        rememberMe ? browserLocalPersistence : browserSessionPersistence
+      );
+      
+      // Firebase authentication with the selected persistence
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (err) {
@@ -151,7 +140,8 @@ function Login() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  defaultChecked={true}
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">Remember me</label>
