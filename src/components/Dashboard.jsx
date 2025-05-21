@@ -136,7 +136,7 @@ const Dashboard = () => {
                   <FiClock className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm">Pending Tasks</p>
+                  <p className="text-gray-500 text-sm">Pending Work</p>
                   <p className="text-2xl font-bold">15</p>
                 </div>
               </div>
