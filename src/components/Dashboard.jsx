@@ -57,7 +57,7 @@ const Dashboard = () => {
             </a>
             <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 text-gray-700">
               <FiBriefcase className="h-5 w-5" />
-              <span>Projects</span>
+              <span>Companies</span>
             </a>
             <a href="#" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 text-gray-700">
               <FiUsers className="h-5 w-5" />
